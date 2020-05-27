@@ -7,7 +7,15 @@ module.exports = (sequelize, DataTypes) => {
     image: DataTypes.STRING
   }, {});
   Produit.associate = function(models) {
-    // associations can be defined here
+    Produit.hasMany(models.Commentaire, {
+      onDelete: "cascade"
+    });
+    Produit.hasMany(models.Note, {
+      onDelete: "cascade"
+    });
+    Produit.hasMany(models.Panier, {
+      onDelete: "cascade"
+    });
   };
   return Produit;
 };
